@@ -16,14 +16,18 @@ class FullMenu(models.Model):
     price = models.IntegerField()
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     cuisine = models.ForeignKey('Cuisine', on_delete=models.CASCADE)
-    
     def __str__(self):
-        return self.title + ', ' + self.description + ', ' + self.price + ', ' + self.category + ', ' + self.cuisine
+        return self.title
 class Category(models.Model):
     name = models.CharField(max_length=30)
+    def __str__(self):
+        return self.name
+    
 
 class Cuisine(models.Model):
     name = models.CharField(max_length=30)
+    def __str__(self):
+        return self.name
 
 # -----------------------------------------------------------------------------------------------------------------
 # using this for a reference to my spicy level subclass
