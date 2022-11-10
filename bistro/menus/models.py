@@ -16,7 +16,9 @@ class FullMenu(models.Model):
     price = models.IntegerField()
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     cuisine = models.ForeignKey('Cuisine', on_delete=models.CASCADE)
-
+    
+    def __str__(self):
+        return self.title + ', ' + self.description + ', ' + self.price + ', ' + self.category + ', ' + self.cuisine
 class Category(models.Model):
     name = models.CharField(max_length=30)
 
