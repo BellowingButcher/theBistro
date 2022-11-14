@@ -1,8 +1,28 @@
+from django.contrib.auth.models import menus, Group
+from rest_framework import viewsets, permissions
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
-from .models import FullMenu
+from .menus import MenusSerializer, GroupSerializer
+# from django.http import HttpResponse, JsonResponse
+# from .models import FullMenu
 
 
+
+class MenusViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = menus.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
 
