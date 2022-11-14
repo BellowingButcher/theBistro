@@ -1,4 +1,7 @@
 from django.db import models
+from pygments.lexers import get_all_lexers
+from pygments.styles import get_all_styles
+
 
 #  models.IntegerField(default=SpicyLevel.mild, choices = SpicyLevel.choices)
 class FullMenu(models.Model):
@@ -16,6 +19,9 @@ class FullMenu(models.Model):
     price = models.IntegerField()
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     cuisine = models.ForeignKey('Cuisine', on_delete=models.CASCADE)
+    class Meta:
+        ordering = ['title']
+
     def __str__(self):
         return self.title
 class Category(models.Model):
@@ -29,19 +35,19 @@ class Cuisine(models.Model):
     def __str__(self):
         return self.name
 
-# -----------------------------------------------------------------------------------------------------------------
-# using this for a reference to my spicy level subclass
-# class Ticket(models.Model):
-#     class Statuses(models.IntegerChoices):
-#         OPEN = 2, 'Open'
-#         PENDING = 3, 'Pending'
-#         RESOLVED = 4, 'Resolved'
-#         CLOSED = 5, 'Closed'
-#     class Priorities(models.IntegerChoices):
-#         LOW = 1, 'Low'
-#         MEDIUM = 2, 'Medium'
-#         HIGH = 3, 'High'
-#         URGENT = 4, 'Urgent'
+# # -----------------------------------------------------------------------------------------------------------------
+# # using this for a reference to my spicy level subclass
+# # class Ticket(models.Model):
+# #     class Statuses(models.IntegerChoices):
+# #         OPEN = 2, 'Open'
+# #         PENDING = 3, 'Pending'
+# #         RESOLVED = 4, 'Resolved'
+# #         CLOSED = 5, 'Closed'
+# #     class Priorities(models.IntegerChoices):
+# #         LOW = 1, 'Low'
+# #         MEDIUM = 2, 'Medium'
+# #         HIGH = 3, 'High'
+# #         URGENT = 4, 'Urgent'
     
-#     priority = models.IntegerField(default=Priorities.LOW, choices = Priorities.choices)
-#     status = models.IntegerField(default=Statuses.OPEN, choices=Statuses.choices)
+# #     priority = models.IntegerField(default=Priorities.LOW, choices = Priorities.choices)
+# #     status = models.IntegerField(default=Statuses.OPEN, choices=Statuses.choices)
