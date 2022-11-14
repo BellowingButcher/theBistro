@@ -1,7 +1,7 @@
 from rest_framework import routers
 from django.contrib import admin
 from django.urls import path, include
-from bistro.menus import views
+from menus import views
 
 router = routers.DefaultRouter()
 router.register(r'menus', views.MenusViewSet)
